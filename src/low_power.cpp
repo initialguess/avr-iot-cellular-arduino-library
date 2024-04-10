@@ -773,7 +773,7 @@ void LowPowerClass::powerSave(void) {
     SequansController.setPowerSaveMode(0, NULL);
 }
 
-void LowPowerClass::powerDown(const uint32_t power_down_time_seconds) {
+uint32_t LowPowerClass::powerDown(const uint32_t power_down_time_seconds) {
 
     SLPCTRL.CTRLA |= SLPCTRL_SMODE_PDOWN_gc | SLPCTRL_SEN_bm;
 
@@ -810,7 +810,9 @@ void LowPowerClass::powerDown(const uint32_t power_down_time_seconds) {
 
     powerUpPeripherals();
 
-    while (!Lte.begin()) {}
+    return remaining_time_seconds;
+
+    //while (!Lte.begin()) {}
 }
 
 float LowPowerClass::getSupplyVoltage(void) {

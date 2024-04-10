@@ -80,8 +80,10 @@ class LowPowerClass {
      * connections on the modem will be terminated.
      *
      * @power_down_time_seconds Seconds to remain powered down.
+     * 
+     * @return remaining seconds if awoken by an interrupt, otherwise 0
      */
-    void powerDown(const uint32_t power_down_time_seconds);
+    uint32_t powerDown(const uint32_t power_down_time_seconds);
 
     /**
      * @return The current voltage supplied to the board.
